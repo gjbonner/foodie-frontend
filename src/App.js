@@ -4,18 +4,19 @@ import './App.css';
 import Search from './components/SearchForm'
 import { getRecipes } from './actions'
 import { connect } from 'react-redux'
+import RecipeContainer from './components/RecipeContainer'
 
 class App extends Component {
 
-  componentDidMount(){
-    this.props.getRecipes()
-  }
 
   render() {
     console.log(this.props)
     console.log('----------')
     return (
+    <div>
       <Search />
+      <RecipeContainer />
+    </div>
     );
   }
 }
