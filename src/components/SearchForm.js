@@ -43,7 +43,7 @@ class Search extends Component{
     render(){
       return(
         <div className='ui grid'>
-          <div className='two column row'>
+          <div className='four column row'>
             <div className='left floated column'>
                 <Form>
                   <Form.Field>

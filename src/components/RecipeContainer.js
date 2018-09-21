@@ -15,9 +15,12 @@ const RecipeContainer = ({ recipes }) => {
  console.log(recipes)
   return(
     <div>
-      <h3>recipes container</h3>
-      {recipes.matches ? recipes.matches.map(recipe => <RecipeCard recipe={recipe} />) : <h1>loading...</h1>}
-    </div>
+      <div className='ui two column grid'>
+        <div className='two column row'>
+          {recipes.matches ? recipes.matches.map(recipe => <RecipeCard key={recipe.id} recipe={recipe} />) : <div className='ui'></div>}
+        </div>
+      </div>
+  </div>
   )
 }
 
