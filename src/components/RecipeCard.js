@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Card, Image, Rating} from 'semantic-ui-react'
+import { connect } from 'react-redux'
 
 const RecipeCard = (props) => {
   let {imageUrlsBySize, recipeName, sourceDisplayName, id, rating} = props.recipe
@@ -10,7 +11,17 @@ const RecipeCard = (props) => {
 
   const handleClick = () => {
     let href = `https://www.yummly.com/recipe/${id}`
-    console.log(href)
+    window.open(href)
+  }
+
+  const likeRecipe = (recipe) => {
+    fetch('http://localhost:3000/api/v1/save',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(recipe)
+    }).then(r => r.json()).then(data => console.log(data))
   }
 
   if(imageUrlsBySize){
@@ -30,6 +41,7 @@ const RecipeCard = (props) => {
                 color='blue'
                 content='Like'
                 icon='heart'
+                onClick={() => likeRecipe(props.recipe)}
               />
               <Button
                 color='black'
@@ -45,5 +57,9 @@ const RecipeCard = (props) => {
   }
 }
 
+function mapDispatchToProps(dispatch){
 
-export default RecipeCard
+}
+
+
+export default connect(null,mapDispatchToProps)(RecipeCard)
