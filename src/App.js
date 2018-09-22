@@ -9,17 +9,6 @@ import Header from './components/Header'
 
 class App extends Component {
 
-  // componentDidMount(){
-  //   let recipe_obj = {recipe_obj: $tmp}
-  //   fetch('http://localhost:3000/api/v1/save',{
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(recipe_obj)
-  //   }).then(r => r.json()).then(data => console.log(data))
-  // }
-
   render() {
     console.log(this.props)
     console.log('----------')

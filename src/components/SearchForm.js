@@ -13,10 +13,11 @@ class Search extends Component{
   }
 
   search = () => {
-    console.log("state is", this.state)
-    console.log("props are", this.props);
-    console.log("--------");
-    this.props.getRecipes(this.state.searchParams)
+    if(this.state.searchParams === ''){
+      window.alert('Please enter at least one ingredient')
+    } else {
+      this.props.getRecipes(this.state.searchParams)
+    }
   }
 
   handleChange = (e) => {

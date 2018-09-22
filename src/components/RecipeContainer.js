@@ -4,14 +4,7 @@ import { connect } from 'react-redux'
 
 
 const RecipeContainer = ({ recipes }) => {
- //console.log(recipes.matches.map(recipe => recipe.ingredients))
-  // if(recipes){
-  //let renderRecipes = recipes.matches.map(recipe => <RecipeCard recipe={recipe} />)
-  //   return renderRecipes
-  // } else {
-  //   let renderRecipes = ''
-  //   return renderRecipes
-  // }
+
  console.log(recipes)
   return(
     <div>

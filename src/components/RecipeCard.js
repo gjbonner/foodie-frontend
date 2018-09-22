@@ -15,13 +15,14 @@ const RecipeCard = (props) => {
   }
 
   const likeRecipe = (recipe) => {
-    fetch('http://localhost:3000/api/v1/save',{
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(recipe)
-    }).then(r => r.json()).then(data => console.log(data))
+    console.log(recipe)
+    // fetch('http://localhost:3000/api/v1/save',{
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(recipe)
+    // }).then(r => r.json()).then(data => console.log(data))
   }
 
   if(imageUrlsBySize){
