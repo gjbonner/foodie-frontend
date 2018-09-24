@@ -1,6 +1,5 @@
 import React from 'react'
 import { Button, Card, Image, Rating} from 'semantic-ui-react'
-import { connect } from 'react-redux'
 
 const RecipeCard = (props) => {
   let {imageUrlsBySize, recipeName, sourceDisplayName, id, rating} = props.recipe
@@ -15,14 +14,48 @@ const RecipeCard = (props) => {
   }
 
   const likeRecipe = (recipe) => {
-    console.log(recipe)
-    // fetch('http://localhost:3000/api/v1/save',{
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(recipe)
-    // }).then(r => r.json()).then(data => console.log(data))
+    if(!recipe.flavors){
+      let recipe_obj = {
+        imageURL: recipe.imageUrlsBySize[90].slice(0, -6),
+        ingredients: recipe.ingredients.toString(),
+        recipeName: recipe.recipeName,
+        rating: recipe.rating,
+        course: recipe.attributes.course,
+        bitter: 0,
+        salty: 0,
+        sweet: 0,
+        piquant: 0,
+        meaty: 0
+      }
+      fetch('http://localhost:3000/api/v1/save',{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(recipe_obj)
+      }).then(r => r.json()).then(data => console.log(data))
+    } else {
+    let recipe_obj = {
+        imageURL: recipe.imageUrlsBySize[90].slice(0, -6),
+        ingredients: recipe.ingredients.toString(),
+        recipeName: recipe.recipeName,
+        rating: recipe.rating,
+        course: recipe.attributes.course,
+        bitter: recipe.flavors.bitter,
+        salty: recipe.flavors.salty,
+        sweet: recipe.flavors.sweet,
+        piquant: recipe.flavors.piquant,
+        meaty: recipe.flavors.meaty
+      }
+      console.log(recipe_obj)
+      fetch('http://localhost:3000/api/v1/save',{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(recipe_obj)
+      }).then(r => r.json()).then(data => console.log(data))
+    }
   }
 
   if(imageUrlsBySize){
@@ -58,9 +91,6 @@ const RecipeCard = (props) => {
   }
 }
 
-function mapDispatchToProps(dispatch){
-
-}
 
 
-export default connect(null,mapDispatchToProps)(RecipeCard)
+export default RecipeCard

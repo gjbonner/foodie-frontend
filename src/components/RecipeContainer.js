@@ -1,25 +1,31 @@
 import React from 'react'
 import RecipeCard from './RecipeCard'
 import { connect } from 'react-redux'
+import { Message, Icon } from 'semantic-ui-react'
+import FilterRecipes from  './FilterRecipes'
+const RecipeContainer = (props) => {
 
-
-const RecipeContainer = ({ recipes }) => {
-
- console.log(recipes)
+ console.log(props.recipes)
   return(
     <div>
-      <div className='ui two column grid'>
-        <div className='two column row'>
-          {recipes.matches ? recipes.matches.map(recipe => <RecipeCard key={recipe.id} recipe={recipe} />) : <div className='ui'></div>}
-        </div>
-      </div>
+          <FilterRecipes />
+          {props.recipes.matches ? props.recipes.matches.map(recipe => <RecipeCard key={recipe.id} recipe={recipe} />) : <div className='ui'>
+            {props.searching ? <Message icon>
+              <Icon name='circle notched' loading />
+                <Message.Content>
+                  <Message.Header>Just one second</Message.Header>
+                  We are fetching that content for you.
+                </Message.Content>
+              </Message> : null}
+          </div>}
   </div>
   )
 }
 
 function mapStateToProps(state){
   return {
-    recipes: state.recipes
+    recipes: state.recipes,
+    searching: state.searching
   }
 }
 

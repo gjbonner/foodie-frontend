@@ -1,7 +1,8 @@
 const initialState = {
   recipes: 'test data',
   loggedIn: true,
-  currentUser: ''
+  currentUser: '',
+  searching: false
 }
 
 const GET_RECIPES = 'GET_RECIPES'
