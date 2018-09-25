@@ -47,7 +47,8 @@ class Search extends Component{
 
   removeIngredient = e => {
   this.setState({
-    ingredients: [...this.state.ingredients].filter(ingredient => ingredient !== e.target.parentNode.innerText),
+    ingredients: [...this.state.ingredients].filter(ingredient => ingredient != e.target.parentNode.innerText),
+    searchParams: this.state.ingredients
   })
 }
     render(){
