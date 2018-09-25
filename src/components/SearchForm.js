@@ -3,6 +3,7 @@ import { Button, Form, Grid, Icon } from 'semantic-ui-react'
 import { getRecipes } from '../actions'
 import { connect } from 'react-redux'
 import Ingredients from './Ingredients'
+
 class Search extends Component{
   constructor(){
     super()
@@ -45,9 +46,9 @@ class Search extends Component{
     }
   }
 
-  removeIngredient = e => {
+  removeIngredient = (e) => {
   this.setState({
-    ingredients: [...this.state.ingredients].filter(ingredient => ingredient != e.target.parentNode.innerText),
+    ingredients: [...this.state.ingredients].filter(ingredient => ingredient !== e.target.parentNode.innerText),
   }, () => this.setState({
     searchParams: this.state.ingredients.toString().split(',').join('+')
   }, () => console.log(this.state.searchParams)))

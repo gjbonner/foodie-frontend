@@ -8,7 +8,6 @@ const RecipeContainer = (props) => {
  console.log(props.recipes)
   return(
     <div>
-          <FilterRecipes />
           <Grid columns='three' divided>
             <Grid.Row>
           {props.recipes.matches ? props.recipes.matches.map(recipe => <RecipeCard key={recipe.id} recipe={recipe} />) : <div className='ui'>

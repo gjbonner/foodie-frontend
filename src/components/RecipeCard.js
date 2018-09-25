@@ -25,7 +25,10 @@ const RecipeCard = (props) => {
         salty: 0,
         sweet: 0,
         piquant: 0,
-        meaty: 0
+        meaty: 0,
+        url: `https://www.yummly.com/recipe/${recipe.id}`,
+        alt_id: recipe.id,
+        user_id: 1
       }
       fetch('http://localhost:3000/api/v1/save',{
         method: 'POST',
@@ -33,7 +36,7 @@ const RecipeCard = (props) => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(recipe_obj)
-      }).then(r => r.json()).then(data => console.log(data))
+      }).then(r => r.json()).then(data => console.log(data)).then(createLike(recipe_obj))
     } else {
     let recipe_obj = {
         imageURL: recipe.imageUrlsBySize[90].slice(0, -6),
@@ -45,7 +48,10 @@ const RecipeCard = (props) => {
         salty: recipe.flavors.salty,
         sweet: recipe.flavors.sweet,
         piquant: recipe.flavors.piquant,
-        meaty: recipe.flavors.meaty
+        meaty: recipe.flavors.meaty,
+        url: `https://www.yummly.com/recipe/${recipe.id}`,
+        alt_id: recipe.id,
+        user_id: 1
       }
       console.log(recipe_obj)
       fetch('http://localhost:3000/api/v1/save',{
@@ -54,8 +60,18 @@ const RecipeCard = (props) => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(recipe_obj)
-      }).then(r => r.json()).then(data => console.log(data))
+      }).then(r => r.json()).then(data => console.log(data)).then(createLike(recipe_obj))
     }
+  }
+
+  const createLike = (recipe_obj) => {
+    fetch('http://localhost:3000/api/v1/likes',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(recipe_obj)
+    }).then(r => r.json()).then(data => console.log(data))
   }
 
   if(imageUrlsBySize){
