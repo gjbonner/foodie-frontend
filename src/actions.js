@@ -18,3 +18,10 @@ export function logoutUser(){
     return dispatch({type: 'TOGGLE_LOGIN', payload: false})
   }
 }
+
+export function getMyLikes(){
+  return (dispatch) => {
+    return fetch('http://localhost:3000/api/v1/recipes')
+    .then(r => r.json()).then(json => dispatch({type: 'GET_LIKES', payload: json})).then(data => console.log(data))
+  }
+}

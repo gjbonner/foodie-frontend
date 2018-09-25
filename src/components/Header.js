@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Segment, Button, Divider, Grid, Icon } from 'semantic-ui-react'
-import { logoutUser } from '../actions'
+import { logoutUser, getMyLikes } from '../actions'
 const Header = (props) => {
   console.log('Header props', props)
   if(props.loggedIn === false){
@@ -25,6 +25,7 @@ const Header = (props) => {
       <div>
         <Segment>
           <Button onClick={props.logoutUser} floated='right'>logout</Button>
+          <Button onClick={props.getMyLikes} floated='right'>My Likes</Button>
           <Icon name='users' size='large' circular />
             <Divider clearing />
           </Segment>
@@ -35,7 +36,8 @@ const Header = (props) => {
 
 function mapDispatchToProps(dispatch){
   return{
-    logoutUser: () => dispatch(logoutUser())
+    logoutUser: () => dispatch(logoutUser()),
+    getMyLikes: () => dispatch(getMyLikes())
   }
 }
 

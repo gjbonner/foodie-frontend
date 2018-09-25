@@ -1,5 +1,5 @@
 const initialState = {
-  recipes: 'test data',
+  recipes: [],
   loggedIn: true,
   currentUser: '',
   searching: false
@@ -7,6 +7,7 @@ const initialState = {
 
 const GET_RECIPES = 'GET_RECIPES'
 const TOGGLE_LOGIN = 'TOGGLE_LOGIN'
+const GET_LIKES = 'GET_LIKES'
 
 export default function reducer(state=initialState, action){
   switch(action.type){
@@ -14,6 +15,8 @@ export default function reducer(state=initialState, action){
       return {...state, recipes: action.payload}
     case TOGGLE_LOGIN:
       return {...state, loggedIn: action.payload}
+    case GET_LIKES:
+      return {...state, recipes: action.payload}
     default:
       return state
   }

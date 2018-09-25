@@ -3,9 +3,11 @@ import RecipeCard from './RecipeCard'
 import { connect } from 'react-redux'
 import { Message, Icon, Grid } from 'semantic-ui-react'
 import FilterRecipes from  './FilterRecipes'
+import MyLikes from './MyLikes'
+
 const RecipeContainer = (props) => {
 
- console.log(props.recipes)
+  //console.log(props.recipes)
   return(
     <div>
           <Grid columns='three' divided>
@@ -18,7 +20,7 @@ const RecipeContainer = (props) => {
                   We are fetching that content for you.
                 </Message.Content>
               </Message> : null}
-        </div>}
+             </div>}
       </Grid.Row>
       </Grid>
   </div>

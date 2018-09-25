@@ -1,12 +1,14 @@
 import React from 'react'
 import { Button, Card, Image, Rating} from 'semantic-ui-react'
 
-const RecipeCard = (props) => {
+const MyLikes = (props) => {
   let {imageUrlsBySize, recipeName, sourceDisplayName, id, rating} = props.recipe
   let {course, cuisine} = props.recipe.attributes
   course ? course = course : course = "None"
   cuisine ? cuisine = cuisine : cuisine = "None"
   let desc = `Course: ${ course }  ||  Cuisine: ${ cuisine}`
+
+  console.log('recipe card',props.recipe)
 
   const handleClick = () => {
     let href = `https://www.yummly.com/recipe/${id}`
@@ -28,10 +30,7 @@ const RecipeCard = (props) => {
         meaty: 0,
         url: `https://www.yummly.com/recipe/${recipe.id}`,
         alt_id: recipe.id,
-        user_id: 1,
-        rCourse: course,
-        rCuisine: cuisine
-
+        user_id: 1
       }
       fetch('http://localhost:3000/api/v1/save',{
         method: 'POST',
@@ -54,9 +53,7 @@ const RecipeCard = (props) => {
         meaty: recipe.flavors.meaty,
         url: `https://www.yummly.com/recipe/${recipe.id}`,
         alt_id: recipe.id,
-        user_id: 1,
-        rCourse: course.toString(),
-        rCuisine: cuisine.toString()
+        user_id: 1
       }
       console.log(recipe_obj)
       fetch('http://localhost:3000/api/v1/save',{
@@ -114,4 +111,4 @@ const RecipeCard = (props) => {
 
 
 
-export default RecipeCard
+export default MyLikes
