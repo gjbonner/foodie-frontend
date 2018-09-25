@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
-import { Button, Form, Grid } from 'semantic-ui-react'
+import { Button, Form, Grid, Icon } from 'semantic-ui-react'
 import { getRecipes } from '../actions'
 import { connect } from 'react-redux'
-
+import Ingredients from './Ingredients'
 class Search extends Component{
   constructor(){
     super()
     this.state = {
       ingredient: '',
-      searchParams: ''
+      searchParams: '',
+      ingredients: []
     }
   }
 
@@ -27,20 +28,28 @@ class Search extends Component{
   }
 
   addIngredient = () => {
-
   if(this.state.searchParams < 1 && this.state.ingredient.length > 0){
     this.setState({
       searchParams: this.state.ingredient,
       ingredient: ''
-    }, () => console.log(this.state.searchParams))
+    }, () => this.setState({
+      ingredients: this.state.searchParams.split(' ')
+    }))
   } else if(this.state.ingredient.length > 0) {
       this.setState({
         searchParams: this.state.searchParams + '+' + this.state.ingredient,
-        ingredient: ''
-      }, () => console.log('search params',this.state.searchParams))
+        ingredient: '',
+      }, () => this.setState({
+        ingredients: this.state.searchParams.split('+')
+      }))
     }
   }
 
+  removeIngredient = e => {
+  this.setState({
+    ingredients: [...this.state.ingredients].filter(ingredient => ingredient !== e.target.parentNode.innerText),
+  })
+}
     render(){
       return(
         <div>
@@ -57,6 +66,9 @@ class Search extends Component{
                   <Button onClick={this.search}>Search</Button>
                 </Button.Group>
               </Form>
+            </Grid.Row>
+            <Grid.Row centered colums={2}>
+              <Ingredients remove={this.removeIngredient} ingredients={this.state.ingredients} />
             </Grid.Row>
             </Grid>
         </div>
