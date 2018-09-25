@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form } from 'semantic-ui-react'
+import { Button, Form, Grid } from 'semantic-ui-react'
 import { getRecipes } from '../actions'
 import { connect } from 'react-redux'
 
@@ -43,9 +43,9 @@ class Search extends Component{
 
     render(){
       return(
-        <div className='ui grid'>
-          <div className='four column row'>
-            <div className='left floated column'>
+        <div>
+          <Grid>
+            <Grid.Row centered colums={2}>
                 <Form>
                   <Form.Field>
                     <label>Search Ingredients</label>
@@ -57,8 +57,8 @@ class Search extends Component{
                   <Button onClick={this.search}>Search</Button>
                 </Button.Group>
               </Form>
-            </div>
-          </div>
+            </Grid.Row>
+            </Grid>
         </div>
       )
     }

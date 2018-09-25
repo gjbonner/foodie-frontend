@@ -1,7 +1,7 @@
 import React from 'react'
 import RecipeCard from './RecipeCard'
 import { connect } from 'react-redux'
-import { Message, Icon } from 'semantic-ui-react'
+import { Message, Icon, Grid } from 'semantic-ui-react'
 import FilterRecipes from  './FilterRecipes'
 const RecipeContainer = (props) => {
 
@@ -9,6 +9,8 @@ const RecipeContainer = (props) => {
   return(
     <div>
           <FilterRecipes />
+          <Grid columns='three' divided>
+            <Grid.Row>
           {props.recipes.matches ? props.recipes.matches.map(recipe => <RecipeCard key={recipe.id} recipe={recipe} />) : <div className='ui'>
             {props.searching ? <Message icon>
               <Icon name='circle notched' loading />
@@ -17,7 +19,9 @@ const RecipeContainer = (props) => {
                   We are fetching that content for you.
                 </Message.Content>
               </Message> : null}
-          </div>}
+        </div>}
+      </Grid.Row>
+      </Grid>
   </div>
   )
 }
