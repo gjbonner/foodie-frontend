@@ -58,7 +58,7 @@ const RecipeCard = (props) => {
         rCourse: course.toString(),
         rCuisine: cuisine.toString()
       }
-      console.log(recipe_obj)
+
       fetch('http://localhost:3000/api/v1/save',{
         method: 'POST',
         headers: {
@@ -69,13 +69,18 @@ const RecipeCard = (props) => {
     }
   }
 
+
   const createLike = (recipe_obj) => {
+    let other_obj = {
+      user_id: recipe_obj.user_id,
+      alt_id_id: recipe_obj.alt_id
+    }
     fetch('http://localhost:3000/api/v1/likes',{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(recipe_obj)
+      body: JSON.stringify(other_obj)
     }).then(r => r.json()).then(data => console.log(data))
   }
 

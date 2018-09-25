@@ -2,7 +2,7 @@ import React from 'react'
 import { Icon, Label } from 'semantic-ui-react'
 
 const Ingredients = (props) => {
-   return props.ingredients.map(ingredient => <Label onClick={props.remove}>{ingredient}<Icon name='remove circle'/></Label>)
+   return props.ingredients.map(ingredient => <Label key={ingredient} onClick={props.remove}>{ingredient}<Icon name='remove circle'/></Label>)
 }
 
 
