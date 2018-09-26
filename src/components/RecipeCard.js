@@ -39,7 +39,7 @@ const RecipeCard = (props) => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(recipe_obj)
-      }).then(r => r.json()).then(data => console.log(data)).then(createLike(recipe_obj))
+      }).then(r => r.json()).then(data => console.log(data))
     } else {
     let recipe_obj = {
         imageURL: recipe.imageUrlsBySize[90].slice(0, -6),
@@ -65,7 +65,7 @@ const RecipeCard = (props) => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(recipe_obj)
-      }).then(r => r.json()).then(data => console.log(data)).then(createLike(recipe_obj))
+      }).then(r => r.json()).then(data => console.log(data))
     }
   }
 
