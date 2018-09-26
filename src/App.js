@@ -1,15 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { getRecipes } from './actions'
 import { connect } from 'react-redux'
 import RecipeContainer from './components/RecipeContainer'
+import { withRouter, Route, Switch, Redirect } from 'react-router-dom'
+import Login from './components/Login'
 
 class App extends Component {
 
   render() {
       return(
-        <RecipeContainer />
+        <Fragment>
+          <Switch>
+            <Route exact path='/login' component={Login} />
+            <Route exact path='/recipes' component={RecipeContainer} />
+          </Switch>
+        </Fragment>
       )
     }
   }
@@ -28,4 +35,4 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));

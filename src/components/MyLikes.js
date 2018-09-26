@@ -38,7 +38,7 @@ const MyLikes = (props) => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(recipe_obj)
-      }).then(r => r.json()).then(data => console.log(data)).then(createLike(recipe_obj))
+      }).then(r => r.json()).then(data => console.log(data))
     } else {
     let recipe_obj = {
         imageURL: recipe.imageUrlsBySize[90].slice(0, -6),
@@ -62,18 +62,8 @@ const MyLikes = (props) => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(recipe_obj)
-      }).then(r => r.json()).then(data => console.log(data)).then(createLike(recipe_obj))
+      }).then(r => r.json()).then(data => console.log(data))
     }
-  }
-
-  const createLike = (recipe_obj) => {
-    fetch('http://localhost:3000/api/v1/likes',{
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(recipe_obj)
-    }).then(r => r.json()).then(data => console.log(data))
   }
 
   if(imageUrlsBySize){
