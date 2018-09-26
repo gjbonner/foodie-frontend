@@ -29,21 +29,23 @@ class Search extends Component{
   }
 
   addIngredient = () => {
-  if(this.state.searchParams < 1 && this.state.ingredient.length > 0){
+  if(this.state.searchParams < 1 && this.state.ingredient !== ''){
     this.setState({
       searchParams: this.state.ingredient,
       ingredient: ''
     }, () => this.setState({
       ingredients: this.state.searchParams.split(' ')
     }))
-  } else if(this.state.ingredient.length > 0) {
+  } else if(this.state.ingredient.length > 0 && this.state.ingredient !== '') {
       this.setState({
         searchParams: this.state.searchParams + '+' + this.state.ingredient,
         ingredient: '',
       }, () => this.setState({
         ingredients: this.state.searchParams.split('+')
       }))
-    }
+    } else if(this.state.ingredient === '') {
+      window.alert('Please enter a valid input')
+    } 
   }
 
   removeIngredient = (e) => {
