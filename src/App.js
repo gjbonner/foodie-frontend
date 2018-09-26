@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import RecipeContainer from './components/RecipeContainer'
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom'
 import Login from './components/Login'
+import MyLikes from './components/MyLikes'
 
 class App extends Component {
 
@@ -15,6 +16,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/login' component={Login} />
             <Route exact path='/recipes' component={RecipeContainer} />
+            <Route exact path='/likes' component={MyLikes} />
           </Switch>
         </Fragment>
       )
