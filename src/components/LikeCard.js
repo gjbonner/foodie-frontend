@@ -1,12 +1,24 @@
 import React from 'react'
 import {Button, Card, Image, Rating} from 'semantic-ui-react'
 const LikeCard = (props) => {
-  console.log(props.recipe)
   let desc = `Course: ${ props.recipe.rCourse }  ||  Cuisine: ${ props.recipe.rCuisine}`
 
   const handleClick = () => {
     let href = props.recipe.url
     window.open(href)
+  }
+
+  const deleteLike = () => {
+    let idObj = {
+      recipe: {
+        id: props.recipe.id
+      }
+    }
+    console.log(idObj)
+    fetch('http://localhost:3000/api/v1/likes',{
+      method: 'DELETE',
+      body: JSON.stringify(idObj)
+    }).then(r => r.json()).then(console.log)
   }
 
   return(
@@ -21,10 +33,10 @@ const LikeCard = (props) => {
         <Card.Content extra>
           <div className='ui two buttons'>
             <Button
-              color='red'
+              color='blue'
               content='Delete'
               icon='delete'
-              onClick={''}
+              onClick={deleteLike}
             />
             <Button
               color='black'

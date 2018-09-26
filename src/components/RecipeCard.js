@@ -16,22 +16,24 @@ const RecipeCard = (props) => {
   const likeRecipe = (recipe) => {
     if(!recipe.flavors){
       let recipe_obj = {
-        imageURL: recipe.imageUrlsBySize[90].slice(0, -6),
-        ingredients: recipe.ingredients.toString(),
-        recipeName: recipe.recipeName,
-        rating: recipe.rating,
-        course: recipe.attributes.course,
-        bitter: 0,
-        salty: 0,
-        sweet: 0,
-        piquant: 0,
-        meaty: 0,
-        url: `https://www.yummly.com/recipe/${recipe.id}`,
-        alt_id: recipe.id,
-        rCourse: course,
-        rCuisine: cuisine
-
+        new_recipe: {
+          imageURL: recipe.imageUrlsBySize[90].slice(0, -6),
+          ingredients: recipe.ingredients.toString(),
+          recipeName: recipe.recipeName,
+          rating: recipe.rating,
+          course: recipe.attributes.course.toString(),
+          bitter: 0,
+          salty: 0,
+          sweet: 0,
+          piquant: 0,
+          meaty: 0,
+          url: `https://www.yummly.com/recipe/${recipe.id}`,
+          alt_id: recipe.id,
+          rCourse: course.toString(),
+          rCuisine: cuisine.toString()
+        }
       }
+
       fetch('http://localhost:3000/api/v1/likes',{
         method: 'POST',
         headers: {

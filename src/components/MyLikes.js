@@ -22,7 +22,7 @@ export default class MyLikes extends Component{
         <Header />
         <Grid columns='three' divided>
           <Grid.Row>
-            <h3>{this.state.likes.map(recipe => <LikeCard key={recipe.id} recipe={recipe} />)}</h3>
+            {this.state.likes.map(recipe => <LikeCard key={recipe.id} recipe={recipe} />)}
           </Grid.Row>
         </Grid>
       </div>
