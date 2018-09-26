@@ -28,12 +28,11 @@ const RecipeCard = (props) => {
         meaty: 0,
         url: `https://www.yummly.com/recipe/${recipe.id}`,
         alt_id: recipe.id,
-        user_id: 1,
         rCourse: course,
         rCuisine: cuisine
 
       }
-      fetch('http://localhost:3000/api/v1/save',{
+      fetch('http://localhost:3000/api/v1/likes',{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -42,11 +41,12 @@ const RecipeCard = (props) => {
       }).then(r => r.json()).then(data => console.log(data))
     } else {
     let recipe_obj = {
+      new_recipe: {
         imageURL: recipe.imageUrlsBySize[90].slice(0, -6),
         ingredients: recipe.ingredients.toString(),
         recipeName: recipe.recipeName,
         rating: recipe.rating,
-        course: recipe.attributes.course,
+        course: recipe.attributes.course.toString(),
         bitter: recipe.flavors.bitter,
         salty: recipe.flavors.salty,
         sweet: recipe.flavors.sweet,
@@ -54,12 +54,12 @@ const RecipeCard = (props) => {
         meaty: recipe.flavors.meaty,
         url: `https://www.yummly.com/recipe/${recipe.id}`,
         alt_id: recipe.id,
-        user_id: 1,
         rCourse: course.toString(),
         rCuisine: cuisine.toString()
       }
+    }
 
-      fetch('http://localhost:3000/api/v1/save',{
+      fetch('http://localhost:3000/api/v1/likes',{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -67,21 +67,6 @@ const RecipeCard = (props) => {
         body: JSON.stringify(recipe_obj)
       }).then(r => r.json()).then(data => console.log(data))
     }
-  }
-
-
-  const createLike = (recipe_obj) => {
-    let other_obj = {
-      user_id: recipe_obj.user_id,
-      alt_id_id: recipe_obj.alt_id
-    }
-    fetch('http://localhost:3000/api/v1/likes',{
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(other_obj)
-    }).then(r => r.json()).then(data => console.log(data))
   }
 
   if(imageUrlsBySize){

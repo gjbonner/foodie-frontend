@@ -4,12 +4,15 @@ import { connect } from 'react-redux'
 import { Message, Icon, Grid } from 'semantic-ui-react'
 import FilterRecipes from  './FilterRecipes'
 import MyLikes from './MyLikes'
-
+import Header from './Header'
+import Search from './SearchForm'
 const RecipeContainer = (props) => {
 
   //console.log(props.recipes)
   return(
     <div>
+      <Header />
+      <Search />
           <Grid columns='three' divided>
             <Grid.Row>
           {props.recipes.matches ? props.recipes.matches.map(recipe => <RecipeCard key={recipe.id} recipe={recipe} />) : <div className='ui'>

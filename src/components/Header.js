@@ -3,24 +3,6 @@ import { connect } from 'react-redux'
 import { Segment, Button, Divider, Grid, Icon } from 'semantic-ui-react'
 import { logoutUser, getMyLikes } from '../actions'
 const Header = (props) => {
-  console.log('Header props', props)
-  if(props.loggedIn === false){
-    return(
-      <Grid centered columns='2'>
-        <Grid.Column>
-          <Segment padded>
-            <Button primary fluid>
-              Login
-            </Button>
-            <Divider horizontal>Or</Divider>
-            <Button secondary fluid>
-              Sign Up Now
-            </Button>
-          </Segment>
-        </Grid.Column>
-      </Grid>
-    )
-  } else {
     return(
       <div>
         <Segment>
@@ -32,7 +14,6 @@ const Header = (props) => {
         </div>
       )
     }
-  }
 
 function mapDispatchToProps(dispatch){
   return{

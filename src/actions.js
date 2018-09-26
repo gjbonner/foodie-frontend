@@ -21,7 +21,7 @@ export function logoutUser(){
 
 export function getMyLikes(){
   return (dispatch) => {
-    return fetch('http://localhost:3000/api/v1/recipes')
+    return fetch('http://localhost:3000/api/v1/likes')
     .then(r => r.json()).then(json => dispatch({type: 'GET_LIKES', payload: json})).then(data => console.log(data))
   }
 }
