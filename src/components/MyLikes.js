@@ -49,5 +49,4 @@ export default class MyLikes extends Component{
       </div>
     )
   }
-
 }
