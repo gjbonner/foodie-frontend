@@ -1,6 +1,7 @@
 import React from 'react'
 import {Button, Card, Image, Rating} from 'semantic-ui-react'
 const LikeCard = (props) => {
+  console.log('like card props',props)
   let desc = `Course: ${ props.recipe.rCourse }  ||  Cuisine: ${ props.recipe.rCuisine}`
 
   const handleClick = () => {
@@ -8,18 +9,7 @@ const LikeCard = (props) => {
     window.open(href)
   }
 
-  const deleteLike = () => {
-    let idObj = {
-      recipe: {
-        id: props.recipe.id
-      }
-    }
-    console.log(idObj)
-    fetch('http://localhost:3000/api/v1/likes',{
-      method: 'DELETE',
-      body: JSON.stringify(idObj)
-    }).then(r => r.json()).then(console.log)
-  }
+
 
   return(
     <Card.Group>
@@ -36,7 +26,7 @@ const LikeCard = (props) => {
               color='blue'
               content='Delete'
               icon='delete'
-              onClick={deleteLike}
+              onClick={() => props.deleteLike(props.recipe)}
             />
             <Button
               color='black'
