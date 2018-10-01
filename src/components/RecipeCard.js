@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Card, Image, Rating} from 'semantic-ui-react'
+import { Button, Card, Image, Rating, Icon} from 'semantic-ui-react'
 
 const RecipeCard = (props) => {
   let {imageUrlsBySize, recipeName, sourceDisplayName, id, rating} = props.recipe
@@ -84,18 +84,14 @@ const RecipeCard = (props) => {
           </Card.Content>
           <Card.Content extra>
             <div className='ui two buttons'>
-              <Button
-                color='blue'
-                content='Like'
-                icon='heart'
-                onClick={() => likeRecipe(props.recipe)}
-              />
-              <Button
-                color='black'
-                content='Recipe'
-                icon='utensils'
-                onClick={handleClick}
-              />
+              <Button animated='fade' color='teal' onClick={() => likeRecipe(props.recipe)}>
+                <Button.Content visible>Like</Button.Content>
+                <Button.Content hidden><Icon name='heart'></Icon></Button.Content>
+              </Button>
+              <Button animated='fade' color='black' onClick={handleClick}>
+                <Button.Content visible>Recipe</Button.Content>
+                <Button.Content hidden><Icon name='utensils'></Icon></Button.Content>
+              </Button>
             </div>
           </Card.Content>
         </Card>

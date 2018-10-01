@@ -60,7 +60,6 @@ class Search extends Component{
 }
 
   toggleLactose = () => {
-    // &allowedAllergy[]=396^Dairy-Free&allowedAllergy[]=393^Gluten-Free
     if(this.state.allergies.includes('&allowedAllergy[]=396^Dairy-Free')){
       this.setState({
         allergies: [...this.state.allergies].filter(allergy => allergy !== '&allowedAllergy[]=396^Dairy-Free')
@@ -101,10 +100,10 @@ class Search extends Component{
                   <Button onClick={this.search}>Search</Button>
                 </Button.Group>
                   <Grid.Row>
-                    <Form.Field>
+                    <Form.Field >
                       <label>Toggle Allergy Filters</label>
                       <Segment>
-                        <Checkbox label='Dairy-Free' toggle onClick={this.toggleLactose}/>
+                        <Checkbox label='Dairy Free' toggle onClick={this.toggleLactose}/>  
                         <Checkbox label='Gluten Free' toggle onClick={this.toggleGluten} />
                       </Segment>
                     </Form.Field>
