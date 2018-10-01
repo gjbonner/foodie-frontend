@@ -14,6 +14,7 @@ class App extends Component {
       return(
         <Fragment>
           <Switch>
+            <Route exact path='/' render={() => <Redirect to="/recipes"/>} />
             <Route exact path='/login' component={Login} />
             <Route exact path='/recipes' component={RecipeContainer} />
             <Route exact path='/likes' component={MyLikes} />

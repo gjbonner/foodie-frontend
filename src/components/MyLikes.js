@@ -27,7 +27,6 @@ export default class MyLikes extends Component{
          id: recipe.id
        }
      }
-     console.log('mylikes',idObj)
      fetch('http://localhost:3000/api/v1/likes',{
        method: 'DELETE',
        headers: {

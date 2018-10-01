@@ -8,9 +8,7 @@ const LikeCard = (props) => {
     let href = props.recipe.url
     window.open(href)
   }
-
-
-
+  
   return(
     <Card.Group>
       <Card>
