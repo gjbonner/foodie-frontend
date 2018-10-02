@@ -7,7 +7,7 @@ import Search from './SearchForm'
 
 const RecipeContainer = (props) => {
   return(
-    <div>
+    <div className='recipeContainer'>
       <Header />
       <Search />
           <Grid columns='three' divided>

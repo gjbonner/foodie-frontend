@@ -3,6 +3,7 @@ import { Button, Form, Grid, Icon, Checkbox, Segment } from 'semantic-ui-react'
 import { getRecipes } from '../actions'
 import { connect } from 'react-redux'
 import Ingredients from './Ingredients'
+import swal from 'sweetalert';
 
 class Search extends Component{
   constructor(){
@@ -17,7 +18,7 @@ class Search extends Component{
 
   search = () => {
     if(this.state.searchParams === ''){
-      window.alert('Please enter at least one ingredient')
+      swal("Please enter at least one ingredient", "", "error")
     } else if(this.state.allergies.length >= 1){
       this.props.getRecipes(this.state.searchParams, this.state.allergies.toString().split(',').join(''))
     } else {
@@ -47,7 +48,7 @@ class Search extends Component{
         ingredients: this.state.searchParams.split('+')
       }))
     } else if(this.state.ingredient === '') {
-      window.alert('Please enter a valid input')
+      swal("Please enter a valid input", "", "error")
     }
   }
 
@@ -89,7 +90,7 @@ class Search extends Component{
         <div>
           <Grid>
             <Grid.Row centered colums={2}>
-                <Form>
+                <Form className='searchForm'>
                   <Form.Field>
                     <label className='title'>Search Ingredients</label>
                     <input onChange={this.handleChange} placeholder='Search Ingredients' value={this.state.ingredient} />

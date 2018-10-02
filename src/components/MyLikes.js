@@ -38,15 +38,17 @@ export default class MyLikes extends Component{
 
   render(){
     return(
-      <div>
+      <div className='likesContainer'>
         <Header />
-        <Grid columns='three' divided>
-          <Grid.Row>
-            <Card.Group centered>
-              {this.state.likes.map(recipe => <LikeCard deleteLike={this.deleteLike} key={recipe.id} recipe={recipe} />)}
-            </Card.Group>
-          </Grid.Row>
-        </Grid>
+        <div className='likesGrid'>
+          <Grid columns='three' divided>
+            <Grid.Row>
+              <Card.Group centered>
+                {this.state.likes.map(recipe => <LikeCard deleteLike={this.deleteLike} key={recipe.id} recipe={recipe} />)}
+              </Card.Group>
+            </Grid.Row>
+          </Grid>
+        </div>
       </div>
     )
   }

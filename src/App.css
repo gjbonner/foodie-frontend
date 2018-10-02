@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400i|Pacifico');
 .App {
   text-align: center;
 }
@@ -22,12 +23,15 @@
   font-size: large;
 }
 
-.title {
-  padding-top: 5px;
+.title{
+  font-size: 1.5em !important;
+  font-family: 'IBM Plex Mono', monospace;
+  margin: 15px !important;
 }
 
+
 .allergies {
-  padding: 10px;
+  padding: 5px;
 }
 
 .img{
@@ -36,6 +40,50 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.swal-title {
+  margin: 0px;
+  font-size: 16px;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.21);
+  margin-bottom: 28px;
+}
+
+
+
+.recipeContainer{
+  background-image: url('./images/board-bunch.jpg');
+  background-size: cover;
+  height: auto;
+  min-height: 100%;
+  position: absolute;
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+.likesContainer{
+  background-image: url('./images/board-bunch.jpg');
+  background-size: cover;
+  height: auto;
+  min-height: 100%;
+  position: absolute;
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+.likesGrid{
+  padding-top: 50px;
+}
+
+.searchForm{
+  /* background-color: black; */
+  border-radius: 5px;
+}
+
+.headerTitle{
+  padding-left: 5px;
+  font-size: 2em;
+  font-family: 'Pacifico', cursive;
 }
 
 @keyframes App-logo-spin {
