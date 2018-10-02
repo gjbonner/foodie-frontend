@@ -19,8 +19,9 @@ const LikeCard = (props) => {
       dangerMode: true
     }).then((willDelete) => {
       if(willDelete){
+        let name = props.recipe.recipeName
       props.deleteLike(props.recipe)
-        swal("Like deleted",{
+        swal(`${name} removed from likes`,{
           icon: "success"
         })
       } else {
