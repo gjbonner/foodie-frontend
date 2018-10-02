@@ -22,6 +22,22 @@
   font-size: large;
 }
 
+.title {
+  padding-top: 5px;
+}
+
+.allergies {
+  padding: 10px;
+}
+
+.img{
+  width: 260px;
+  height: 260px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

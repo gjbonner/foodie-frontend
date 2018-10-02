@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import LikeCard from './LikeCard'
-import { Grid } from 'semantic-ui-react'
+import { Grid, Card } from 'semantic-ui-react'
 import Header from './Header'
 
 export default class MyLikes extends Component{
@@ -42,7 +42,9 @@ export default class MyLikes extends Component{
         <Header />
         <Grid columns='three' divided>
           <Grid.Row>
-            {this.state.likes.map(recipe => <LikeCard deleteLike={this.deleteLike} key={recipe.id} recipe={recipe} />)}
+            <Card.Group centered>
+              {this.state.likes.map(recipe => <LikeCard deleteLike={this.deleteLike} key={recipe.id} recipe={recipe} />)}
+            </Card.Group>
           </Grid.Row>
         </Grid>
       </div>

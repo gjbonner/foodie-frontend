@@ -1,5 +1,7 @@
 import React from 'react'
 import {Button, Card, Image, Rating, Icon} from 'semantic-ui-react'
+import swal from 'sweetalert';
+
 const LikeCard = (props) => {
   console.log('like card props',props)
   let desc = `Course: ${ props.recipe.rCourse }  ||  Cuisine: ${ props.recipe.rCuisine}`
@@ -9,18 +11,35 @@ const LikeCard = (props) => {
     window.open(href)
   }
 
+  const deleteRecipe = () => {
+    swal({
+      title: "Are you sure?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true
+    }).then((willDelete) => {
+      if(willDelete){
+      props.deleteLike(props.recipe)
+        swal("Like deleted",{
+          icon: "success"
+        })
+      } else {
+        swal("Cancelled")
+      }
+    })
+  }
+
   return(
-    <Card.Group>
       <Card>
         <Card.Content>
-          <Image floated='right' src={props.recipe.imageURL} rounded/>
+          <Image className='img' floated='right' src={props.recipe.imageURL} rounded/>
           <Card.Header>{props.recipe.recipeName}</Card.Header>
           <Card.Meta>Rating: {<Rating defaultRating={props.recipe.rating} maxRating={props.recipe.rating} disabled/>}</Card.Meta>
           <Card.Description>{desc}</Card.Description>
         </Card.Content>
         <Card.Content extra>
           <div className='ui two buttons'>
-            <Button animated='fade' color='teal' onClick={() => props.deleteLike(props.recipe)}>
+            <Button animated='fade' color='teal' onClick={() => deleteRecipe(props.recipes)}>
               <Button.Content visible>Delete</Button.Content>
               <Button.Content hidden><Icon name='delete'></Icon></Button.Content>
             </Button>
@@ -31,7 +50,6 @@ const LikeCard = (props) => {
           </div>
         </Card.Content>
       </Card>
-    </Card.Group>
   )
 }
 

@@ -91,7 +91,7 @@ class Search extends Component{
             <Grid.Row centered colums={2}>
                 <Form>
                   <Form.Field>
-                    <label>Search Ingredients</label>
+                    <label className='title'>Search Ingredients</label>
                     <input onChange={this.handleChange} placeholder='Search Ingredients' value={this.state.ingredient} />
                   </Form.Field>
                   <Button.Group>
@@ -101,10 +101,10 @@ class Search extends Component{
                 </Button.Group>
                   <Grid.Row>
                     <Form.Field >
-                      <label>Toggle Allergy Filters</label>
+                      <label className='title'>Toggle Allergy Filters</label>
                       <Segment>
-                        <Checkbox label='Dairy Free' toggle onClick={this.toggleLactose}/>  
-                        <Checkbox label='Gluten Free' toggle onClick={this.toggleGluten} />
+                        <Checkbox className='allergies' label='Dairy Free' toggle onClick={this.toggleLactose}/>
+                        <Checkbox className='allergies' label='Gluten Free' toggle onClick={this.toggleGluten} />
                       </Segment>
                     </Form.Field>
                   </Grid.Row>
@@ -127,7 +127,8 @@ class Search extends Component{
 
   function mapStateToProps(state){
     return{
-      searchParams: state.searchParams
+      searchParams: state.searchParams,
+      recipes: state.recipes
     }
   }
 

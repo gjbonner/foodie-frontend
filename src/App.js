@@ -7,6 +7,7 @@ import RecipeContainer from './components/RecipeContainer'
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom'
 import Login from './components/Login'
 import MyLikes from './components/MyLikes'
+import swal from 'sweetalert'
 
 class App extends Component {
 
