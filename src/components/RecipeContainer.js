@@ -12,7 +12,7 @@ const RecipeContainer = (props) => {
       <Search />
           <Grid columns='three' divided>
             <Grid.Row>
-              <Card.Group centered>
+              <Card.Group itemsPerRow={4} centered>
                 {props.recipes.matches ? props.recipes.matches.map(recipe => <RecipeCard key={recipe.id} recipe={recipe} />) : <div> </div>}
               </Card.Group>
       </Grid.Row>

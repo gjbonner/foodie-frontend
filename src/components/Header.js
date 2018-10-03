@@ -7,14 +7,12 @@ const Header = (props) => {
     return(
       <div>
         <Segment>
-          <Button as={NavLink} to="/login" onClick={props.logoutUser} floated='right'>logout</Button>
-          <Button as={NavLink} to="/likes" onClick={props.getMyLikes} floated='right'>My Likes</Button>
-          <Button as={NavLink} to="/recipes" floated='right'>Search Recipes</Button>
-          <Icon name='users' size='large' circular />
+          <Button className='headerBtn' as={NavLink} to="/likes" onClick={props.getMyLikes} floated='right'>My Likes</Button>
+          <Button className='headerBtn' as={NavLink} to="/recipes" floated='right'>Search Recipes</Button>
           <label class='headerTitle'>What To Make</label>
-            <Divider clearing />
-          </Segment>
-        </div>
+          <Divider clearing />
+        </Segment>
+      </div>
       )
     }
 

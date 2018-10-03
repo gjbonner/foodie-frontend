@@ -7,7 +7,8 @@ export default class MyLikes extends Component{
   constructor(){
     super()
     this.state = {
-      likes: []
+      likes: [],
+      gettingLikes: true
     }
   }
 
@@ -43,7 +44,7 @@ export default class MyLikes extends Component{
         <div className='likesGrid'>
           <Grid columns='three' divided>
             <Grid.Row>
-              <Card.Group centered>
+              <Card.Group className='cards' itemsPerRow={4} centered>
                 {this.state.likes.map(recipe => <LikeCard deleteLike={this.deleteLike} key={recipe.id} recipe={recipe} />)}
               </Card.Group>
             </Grid.Row>
