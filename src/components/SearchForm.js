@@ -41,11 +41,12 @@ class Search extends Component{
       ingredients: this.state.searchParams.split(' ')
     }))
   } else if(this.state.ingredient.length > 0 && this.state.ingredient !== '') {
+    console.log(this.state.ingredients, this.state.ingredient)
       this.setState({
         searchParams: this.state.searchParams + '+' + this.state.ingredient,
-        ingredient: '',
+        ingredients: [...this.state.ingredients, this.state.ingredient]
       }, () => this.setState({
-        ingredients: this.state.searchParams.split('+')
+        ingredient: ''
       }))
     } else if(this.state.ingredient === '') {
       swal("Please enter a valid input", "", "error")
@@ -57,7 +58,7 @@ class Search extends Component{
     ingredients: [...this.state.ingredients].filter(ingredient => ingredient !== e.target.parentNode.innerText),
   }, () => this.setState({
     searchParams: this.state.ingredients.toString().split(',').join('+')
-  }, () => console.log(this.state.searchParams)))
+  }))
 }
 
   toggleLactose = () => {

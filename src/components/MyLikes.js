@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import LikeCard from './LikeCard'
 import { Grid, Card } from 'semantic-ui-react'
 import Header from './Header'
+import swal from 'sweetalert'
 
 export default class MyLikes extends Component{
   constructor(){

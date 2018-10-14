@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Message, Icon, Grid, Card } from 'semantic-ui-react'
 import Header from './Header'
 import Search from './SearchForm'
+import swal from 'sweetalert'
 
 const RecipeContainer = (props) => {
   return(
@@ -13,7 +14,7 @@ const RecipeContainer = (props) => {
           <Grid columns='three' divided>
             <Grid.Row>
               <Card.Group itemsPerRow={4} centered>
-                {props.recipes.matches ? props.recipes.matches.map(recipe => <RecipeCard key={recipe.id} recipe={recipe} />) : <div> </div>}
+                {props.recipes.matches ? props.recipes.matches.map(recipe => <RecipeCard key={recipe.id} recipe={recipe} />) : <div></div>}
               </Card.Group>
       </Grid.Row>
     </Grid>

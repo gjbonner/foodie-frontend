@@ -4,7 +4,7 @@ import swal from 'sweetalert';
 
 const LikeCard = (props) => {
   console.log('like card props',props)
-  let desc = `Course: ${ props.recipe.rCourse }  ||  Cuisine: ${ props.recipe.rCuisine}`
+  let desc = `Course: ${ props.recipe.rCourse } ||  Cuisine: ${ props.recipe.rCuisine}`
 
   const handleClick = () => {
     let href = props.recipe.url
