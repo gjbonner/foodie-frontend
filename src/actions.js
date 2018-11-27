@@ -12,6 +12,10 @@ export function getRecipes(searchParams, allergies){
   }
 }
 
+export function addToPantry(ingredient){
+  let ingredient = {}
+}
+
 export function logoutUser(){
   return(dispatch) => {
     return dispatch({type: 'TOGGLE_LOGIN', payload: false})
