@@ -12,8 +12,18 @@ export function getRecipes(searchParams, allergies){
   }
 }
 
-export function addToPantry(ingredient){
-  let ingredient = {}
+export function addToPantry(name){
+  let ingredient = {name: name}
+  return(dispatch) => {
+    return fetch('http://localhost:3000/api/v1/pantry',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(ingredient)
+    }).then(r => r.json())
+    .then(data => console.log(data))
+  }
 }
 
 export function logoutUser(){

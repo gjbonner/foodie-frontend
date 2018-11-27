@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-// import { } from 'semantic-ui-react'
-import  { } from '../actions'
+import  {addToPantry} from '../actions'
 
 export default class Pantry extends Component {
     constructor(){
@@ -12,7 +11,4 @@ export default class Pantry extends Component {
       }
     }
 
-    onChange = () => {
-      console.log()
-    }
 }
