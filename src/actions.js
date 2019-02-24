@@ -1,6 +1,7 @@
 export function getRecipes(searchParams, allergies){
   let ingredients = {ingredients: searchParams, allergies: allergies}
   return (dispatch) => {
+    dispatch({type: 'GETTING_RECIPES'})
     return fetch('http://localhost:3000/api/v1/search',{
       method: 'POST',
       headers: {
@@ -8,9 +9,13 @@ export function getRecipes(searchParams, allergies){
       },
       body: JSON.stringify(ingredients)
     }).then(r => r.json())
-    .then(json => dispatch({type: 'GET_RECIPES', payload: json}), () => dispatch({type: 'GETTING_RECIPES', payload: true}))
+    .then(json =>{
+        dispatch({type: 'GET_RECIPES', payload: json})
+        dispatch({type: 'GOT_RECIPES', payload: false})
+    })
   }
 }
+
 
 export function addToPantry(name){
   let ingredient = {name: name}
@@ -35,7 +40,7 @@ export function logoutUser(){
 export function getMyLikes(){
   return (dispatch) => {
     return fetch('http://localhost:3000/api/v1/likes')
-    .then(r => r.json()).then(json => dispatch({type: 'GET_LIKES', payload: json})).then(data => console.log(data))
+    .then(r => r.json()).then(json => dispatch({type: 'GET_LIKES', payload: json}))
   }
 }
 
@@ -109,5 +114,11 @@ export function showModal(){
 export function hideModal(){
   return(dispatch) => {
     return dispatch({type: 'HIDE_MODAL'})
+  }
+}
+
+export function loading(){
+  return(dispatch) => {
+    return dispatch({type: 'GETTING_RECIPES'})
   }
 }

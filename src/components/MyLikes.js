@@ -4,7 +4,7 @@ import { Grid, Card } from 'semantic-ui-react'
 import Header from './Header'
 import swal from 'sweetalert'
 
-export default class MyLikes extends Component{
+class MyLikes extends Component{
   constructor(){
     super()
     this.state = {
@@ -43,9 +43,9 @@ export default class MyLikes extends Component{
       <div className='likesContainer'>
         <Header />
         <div className='likesGrid'>
-          <Grid columns='three' divided>
+          <Grid columns='three' centered divided>
             <Grid.Row>
-              <Card.Group className='cards' itemsPerRow={4} centered>
+              <Card.Group centered className='cards'>
                 {this.state.likes.map(recipe => <LikeCard deleteLike={this.deleteLike} key={recipe.id} recipe={recipe} />)}
               </Card.Group>
             </Grid.Row>
@@ -55,3 +55,5 @@ export default class MyLikes extends Component{
     )
   }
 }
+
+export default MyLikes

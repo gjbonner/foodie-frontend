@@ -6,7 +6,8 @@ const initialState = {
   authenticatingUser: false,
   failedLogin: false,
   error: null,
-  displayModal: true
+  displayModal: true,
+  gettingRecipes: false
 }
 
 const GET_RECIPES = 'GET_RECIPES'
